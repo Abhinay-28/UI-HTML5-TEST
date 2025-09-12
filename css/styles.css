@@ -1,0 +1,829 @@
+/* ---------- GLOBAL ---------- */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  color: #000;
+  background: #fff;
+} 
+
+
+/* .btn {
+  background: #000;
+  color: #fff;
+  border-radius: 18px;
+  padding: 10px 30px;
+  border: none;
+  cursor: pointer;
+}
+.btn:hover { opacity: 0.85; } */
+
+
+
+
+body {
+      font-family: Arial, sans-serif;
+    }
+
+    
+    .logo {
+      font-size: 24px;
+    }
+    .logo span {
+      font-weight: bold;
+    }
+
+    
+    .navbar-nav .nav-link {
+      color: black;
+      font-size: 16px;
+    }
+    .navbar-nav .nav-link.active {
+      font-weight: bold;
+    }
+
+    
+    .nav-icons i {
+      font-size: 20px;
+      margin-left: 20px;
+      cursor: pointer;
+    }
+
+    
+    .sub-header {
+      display: flex;
+      justify-content: space-between;
+      padding: 5px 40px 10px 40px;
+      font-size: 14px;
+      color: #444;
+    }
+    .sub-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+
+    
+
+
+
+/* ---------- HERO ---------- */
+/* ---------- HERO ---------- */
+
+
+
+
+
+
+/* HERO CONTAINER */
+.hero {
+  position: relative;
+  overflow: visible;
+  padding: 80px 20px 40px;
+}
+
+.hero__slider {
+  position: relative;
+  height: 700px;
+  perspective: 1200px;
+  margin-bottom: -159px;
+}
+
+/* base slide */
+.hero__slide {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.6);
+  transition: transform 0.9s ease, opacity 0.6s ease;
+  z-index: 1;
+}
+
+/* active center */
+.hero__slide.active {
+  opacity: 1;
+  transform: translate(-50%, -76%) scale(1.08);
+  z-index: 4;
+}
+
+/* left & right positions (visual arc) */
+.hero__slide.left {
+  opacity: 1;
+  transform: translate(-220%, -40%) scale(0.78) rotate(-10deg);
+  z-index: 2;
+}
+.hero__slide.right {
+  opacity: 1;
+  transform: translate(120%, -40%) scale(0.78) rotate(10deg);
+  z-index: 2;
+}
+
+
+
+
+
+/* ring image */
+.hero__ring {
+  max-width: 360px;
+  height: 360px;
+  display: block;
+  margin: 0 auto;
+}
+
+/* split grey background name — left & right halves */
+.hero__bgtext-left,
+.hero__bgtext-right {
+  position: absolute;
+  font-weight: 700;
+  color: rgba(0, 0, 0, 0.08);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.45s ease, transform 0.45s ease;
+  white-space: nowrap;
+}
+
+/* default positions for halves */
+.hero__bgtext-left {
+  position: relative;
+    top: 282px;
+    left: -289px;
+  
+  
+  text-align: right;
+  font-size: 60px;
+  transform: translateY(-50%);
+}
+.hero__bgtext-right {
+ position: absolute;
+  top: 283px;
+  left: 310px;
+  text-align: left;
+  font-size: 60px;
+  transform: translateY(-50%);
+}
+
+/* only visible for active slide */
+.hero__slide.active .hero__bgtext-left,
+.hero__slide.active .hero__bgtext-right {
+  opacity: 1;
+  font-size: 96px;
+  transform: translateY(-65%);
+}
+
+/* Hide the inline hero__content for non-active slides */
+.hero__content {
+  display: none;
+}
+.hero__slide.active .hero__content {
+  display: block;
+  margin-top: 22px;
+}
+
+/* controls */
+.hero__control {
+  border: none;
+  background: rgba(0,0,0,0.55);
+  color: #fff;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+
+
+.collection h2 {
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+.collection p { color: #666; }
+
+
+
+/* ---------- EXPLORE LOOSE DIAMONDS ---------- */
+/* ---------- EXPLORE LOOSE DIAMONDS ---------- */
+/* ---------- EXPLORE LOOSE DIAMONDS ---------- */
+.diamonds {
+  text-align: center;
+  padding: 40px 0;
+}
+
+.diamonds__desc {
+  margin-bottom: 30px;
+  color: #555;
+}
+
+.diamonds__carousel {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 0;
+  perspective: 1200px;
+  overflow: visible; /* make sure nothing is clipped */
+  
+}
+
+.diamond-card {
+  background: #fff;
+  border: 3px solid #ddd; /* thicker border for visibility */
+  border-radius: 5px;
+  padding: 25px;
+  width: 322px;
+  height: 290.5px;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.12);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative; /* important for z-index control */
+}
+
+.diamond-card img {
+  max-width: 140px;   /* bigger diamond images */
+  margin: 0 auto 20px;
+  display: block;
+}
+
+.diamond-card h3 {
+  font-size: 20px;  /* slightly bigger heading */
+  margin: 12px 0;
+  font-weight: bold;
+}
+
+.diamond-card p {
+  font-size: 15px;  /* slightly bigger subtitle */
+  color: #f56c6c;
+}
+
+/* Left side cards tilt inward */
+.diamond-card.left {
+  transform: rotateY(-35deg) scale(0.95);
+  margin-right: -50px;
+  z-index: 2; /* visible above other left cards */
+}
+
+/* Right cards */
+.diamond-card.right {
+  transform: rotateY(22deg) scale(0.95);
+  margin-left: -50px;
+  z-index: 2; /* visible above other right cards */
+}
+
+/* Center card on top */
+.diamond-card.center {
+  transform: scale(1.15);
+  z-index: 10; /* always on top */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
+}
+
+/* Dots */
+
+
+/* Dots container */
+/* Dots/pagination under diamonds */
+/* Dots/pagination under diamonds */
+/* Dots/pagination under diamonds */
+.diamonds__dots {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 22px;
+  align-items: center;
+}
+
+.diamonds__dots .dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #e6e6e6;
+  display: inline-block;
+  transition: background-color .25s ease, transform .25s ease;
+  cursor: pointer;
+}
+
+.diamonds__dots .dot.active {
+  background: #a0a0a0;
+  transform: scale(1.15);
+}
+
+
+.diamonds__carousel {
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  will-change: transform;
+}
+
+.diamond-card hr{
+  width: 110%
+}
+
+
+/* Left side tilt inward */
+.diamond-card:nth-child(1) {
+  transform: rotateY(25deg);
+  margin-right: -40px;
+  z-index: 1;
+}
+.diamond-card:nth-child(2) {
+  transform: rotateY(25deg);
+  margin-right: -30px;
+  z-index: 2;
+}
+.diamond-card:nth-child(3) {
+  transform: rotateY(25deg);
+  margin-right: -20px;
+  z-index: 3;
+}
+
+/* Middle card */
+.diamond-card:nth-child(4) {
+  transform: rotateY(0deg);
+  margin: 0 10px;
+  z-index: 5;
+}
+
+/* Right side tilt inward */
+.diamond-card:nth-child(5) {
+  transform: rotateY(-12deg);
+  margin-left: -20px;
+  z-index: 3;
+}
+.diamond-card:nth-child(6) {
+  transform: rotateY(-12deg);
+  margin-left: -30px;
+  z-index: 2;
+}
+.diamond-card:nth-child(7) {
+  transform: rotateY(-12deg);
+  margin-left: -40px;
+  z-index: 1;
+}
+
+
+
+/* Hover effect */
+/* .diamond-card:hover {
+  border-color: #e65c2a;
+  transform: rotateY(0deg) scale(1.05);
+  z-index: 10;
+} */
+
+/* Card content */
+.diamond-card img {
+  width: 100%;
+  margin-bottom: 10px;
+}
+.diamond-card h3 {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 10px 0 5px;
+}
+.diamond-card p {
+  font-size: 11px;
+  color: #e65c2a;
+}
+
+
+
+
+
+/* ---------- KEEP IN TOUCH ---------- */
+.signup {
+  padding: 60px 0;
+}
+.diamonds__desc{
+  margin-bottom: 48px;
+}
+
+.signup h2 {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+.signup p {
+  color: #666;
+  margin-bottom: 20px;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.signup__form {
+  max-width: 400px;
+}
+
+.signup__form .form-control {
+  border: none;
+  border-bottom: 1px solid #ccc;
+  border-radius: 0;
+  padding: 10px 0;
+  font-size: 16px;
+  box-shadow: none;
+}
+
+.signup__form .form-control:focus {
+  border-bottom: 1px solid #000;
+  outline: none;
+  box-shadow: none;
+}
+
+.signup__form .btn {
+  display: inline-block;
+  background: #111;
+  color: #fff;
+  border-radius: 25px;
+  padding: 10px 40px;
+  margin-top: 20px;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.signup__form .btn:hover {
+  opacity: 0.9;
+}
+
+/* Image grid */
+.signup .image-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 10px;
+}
+
+/* .signup img {
+  width: 327px;
+  height: 328px;
+  object-fit: cover; 
+} */
+
+.signup .image-grid img {
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+  object-fit: cover;
+}
+
+
+/* ---------- FOOTER ---------- */
+/* ---------- FOOTER ---------- */
+.site-footer {
+  background: #f9f9f9;
+  padding: 60px 20px 40px;
+  text-align: center;
+  color: #555;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* Brand */
+.footer__brand h2 {
+  font-size: 26px;
+  font-weight: bold;
+  color: #000;
+  margin-bottom: 6px;
+}
+.footer__brand span {
+  font-weight: 900;
+}
+.footer__brand .tagline {
+  color: #e65c2a;  /* Orange */
+  margin-bottom: 16px;
+  font-weight: 500;
+}
+
+/* Description */
+.footer__desc {
+  max-width: 700px;
+  margin: 0 auto 20px;
+  color: #666;
+  font-size: 16px;
+}
+
+/* Divider */
+.site-footer hr {
+border: 0;
+    border-top: 1px solid #050606;
+    margin: 30px auto;
+    width: 101%;
+}
+
+/* Links */
+.footer__links {
+  margin: 20px 0;
+}
+.footer__links a {
+  margin: 0 15px;
+  color: #555;
+  text-decoration: none;
+  font-weight: 500;
+}
+.footer__links a:hover {
+  text-decoration: underline;
+}
+
+/* Logos */
+.footer__logos {
+  margin: 30px 0;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 25px;
+}
+.footer__logos img {
+  max-height: 36px;
+  object-fit: contain;
+  opacity: 0.85;
+  transition: opacity 0.3s;
+}
+.footer__logos img:hover {
+  opacity: 1;
+}
+
+/* Bottom */
+.footer__bottom {
+  font-size: 12px;
+  color: #777;
+  margin-top: 20px;
+}
+.footer__bottom a {
+  color: #555;
+  text-decoration: none;
+  margin: 0 6px;
+}
+.footer__bottom a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .footer__links {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .footer__links a {
+    margin: 0;
+  }
+  .site-footer hr {
+    width: 100%;
+  }
+}
+
+
+.material-symbols-outlined {
+  position: relative;
+  top: 54px;
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 24
+}
+
+/* ---------- HEADER ICONS ---------- */
+/* Header icons general */
+.header-icon {
+  font-size: 22px;
+  cursor: pointer;
+  vertical-align: middle;
+}
+
+.header-icon:hover {
+  color: #e65c2a; /* hover orange */
+}
+
+.right-icons {
+  position: relative;
+  top: 0;
+  left: 0;
+}
+.dimend {
+  position: relative;
+    top: 48px;
+    left: -483px
+}
+.middle-icons {
+  position: relative;
+  left: 67px;
+  gap: 20px;
+}
+@media (max-width: 991px) {
+  .middle-icons {
+    flex-direction: column;
+    margin-top: 10px;
+  }
+}
+
+@media (max-width: 768px) {
+  .middle-icons {
+    flex-direction: column;
+    margin: 15px 0;
+    text-align: left;
+  }
+  .right-icons {
+    display: none; /* hide desktop icons */
+  }
+}
+
+
+.inquiry {
+  font-size: 14px;
+  color: #555;
+  position: relative;
+  top: 54px;
+}
+.feedback{
+
+}
+.person_2{
+position: relative;
+  top: 56px;
+}
+
+
+/* Layout adjustments */
+.site-header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+.second-hr{
+  width: 85%;
+    position: relative;
+    left: 110px;
+}
+
+.footer-icons{
+  gap: 10px;
+}
+
+.diamonds__carousel {
+  display: flex;
+  justify-content: center;
+  perspective: 1200px;
+  overflow: hidden;
+  flex-wrap: nowrap;
+  transition: transform 0.7s ease; /* smoother slide */
+}
+
+
+/* Hamburger button (mobile only) */
+.hamburger {
+  font-size: 28px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+/* Mobile Sidebar Menu */
+.mobile-menu {
+  position: fixed;
+  top: 0;
+  left: -100%;
+  width: 80%;
+  height: 100%;
+  background: #fff;
+  box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+  padding: 20px;
+  transition: left 0.3s ease;
+  z-index: 2000;
+}
+
+.mobile-menu.active {
+  left: 0;
+}
+
+.mobile-menu .close-btn {
+  font-size: 30px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: block;
+  margin-left: auto;
+}
+
+.mobile-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0;
+}
+
+.mobile-menu ul li {
+  margin: 15px 0;
+}
+
+.mobile-menu ul li a {
+  text-decoration: none;
+  color: #000;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.mobile-menu .extras {
+  margin-top: 30px;
+  font-size: 16px;
+  color: #444;
+}
+.mobile-menu .extras div {
+  margin: 12px 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+
+/* Tablet (keep 3 rings but smaller) */
+
+
+
+/* Animation keyframes */
+@keyframes rotateInRight {
+  from {
+    transform: translate(-50%, -50%) rotateY(-90deg) scale(0.6);
+    opacity: 0;
+  }
+  to {
+    transform: translate(-50%, -58%) rotateY(0) scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes rotateInLeft {
+  from {
+    transform: translate(-50%, -50%) rotateY(90deg) scale(0.6);
+    opacity: 0;
+  }
+  to {
+    transform: translate(-50%, -58%) rotateY(0) scale(1);
+    opacity: 1;
+  }
+}
+
+/* Apply when slide becomes active */
+.hero__slide.slide-in-right {
+  animation: rotateInRight 0.9s ease forwards;
+}
+.hero__slide.slide-in-left {
+  animation: rotateInLeft 0.9s ease forwards;
+}
+
+
+/* Default styles (desktop) already fine */
+
+/* Tablet view */
+/* @media (max-width: 992px) {
+  .middle-icons {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .right-icons {
+    gap: 15px;
+  }
+}
+
+/* Mobile view */
+@media (max-width: 768px) {
+  .site-header .brand {
+    font-size: 20px;
+  }
+
+  .middle-icons {
+    flex-direction: column;
+    margin-top: 15px;
+  }
+
+  .right-icons {
+    display: none !important; 
+  }
+
+  .navbar-toggler {
+    font-size: 28px;
+  }
+} 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
