@@ -55,7 +55,7 @@ slides.forEach((slide, i) => {
 });
 
 // Autoplay
-setInterval(nextSlide, 5000);
+// setInterval(nextSlide, 5000);
 
 updateSlides();
 
