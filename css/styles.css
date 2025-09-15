@@ -1014,6 +1014,25 @@ position: relative;
 /* 💻 Desktop (default ≥ 992px) already styled */
 
 
+/* Hide whole website except navbar on mobile */
+@media (max-width: 768px) {
+  main,
+  .hero,
+  .diamonds,
+  footer,
+  .sub-header,
+  .logo,
+  .nav-icons {
+    display: none !important;
+  }
+
+  /* Make sure navbar stays visible */
+  .navbar {
+    width: 100%;
+    position: relative;
+    z-index: 999;
+  }
+}
 
 
 
