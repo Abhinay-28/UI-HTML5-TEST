@@ -7,6 +7,23 @@ body {
 } 
 
 
+/* Prevent horizontal scroll */
+html, body {
+  overflow-x: hidden;
+}
+
+/* Make sure navbar doesn’t overflow */
+.navbar, .container-fluid {
+  max-width: 100%;
+}
+
+/* Ensure sub-header fits inside */
+.sub-header {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+
 /* .btn {
   background: #000;
   color: #fff;
@@ -16,6 +33,46 @@ body {
   cursor: pointer;
 }
 .btn:hover { opacity: 0.85; } */
+
+/* Logo */
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+/* 
+.logo span {
+  color: #007bff;
+} */
+
+/* Navbar icons */
+.nav-icons i {
+  font-size: 1.2rem;
+  margin-left: 15px;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.nav-icons i:hover {
+  color: #007bff;
+}
+
+/* Sub-header */
+.sub-header {
+  justify-content: center;
+  gap: 20px;
+  padding: 8px 0;
+  background: #f8f9fa;
+}
+
+.sub-item {
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.sub-item:hover {
+  color: #007bff;
+}
+
 
 
 
@@ -191,6 +248,7 @@ body {
 /* Hide the inline hero__content for non-active slides */
 /* Hide text smoothly */
 .hero__content {
+
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.45s ease;
@@ -839,6 +897,122 @@ position: relative;
     font-size: 28px;
   }
 } 
+
+
+/* ========== MEDIA QUERIES ========== */
+
+/* 📱 Mobile (up to 576px) */
+@media (max-width: 576px) {
+  /* Hero */
+  .hero__slider {
+    height: 400px;
+  }
+  .hero__slide.active {
+    transform: translate(-50%, -65%) scale(0.9);
+  }
+  .hero__ring {
+    max-width: 220px;
+    height: auto;
+  }
+  .hero__bgtext-left,
+  .hero__bgtext-right {
+    font-size: 32px;
+    top: 180px;
+  }
+  .hero__slide.active .hero__bgtext-left,
+  .hero__slide.active .hero__bgtext-right {
+    font-size: 48px;
+  }
+  .hero__content h2 {
+    font-size: 20px;
+  }
+  .hero__content p {
+    font-size: 14px;
+  }
+
+  /* Diamonds carousel */
+  .diamond-card {
+    width: 200px;
+    height: auto;
+    padding: 15px;
+  }
+  .diamond-card img {
+    max-width: 90px;
+  }
+  .diamond-card h3 {
+    font-size: 14px;
+  }
+  .diamond-card p {
+    font-size: 11px;
+  }
+
+  /* Footer spacing */
+  .site-footer {
+    padding: 30px 15px;
+  }
+}
+
+/* 📲 Tablet (577px – 991px) */
+@media (min-width: 577px) and (max-width: 991px) {
+  /* Hero */
+  .hero__slider {
+    height: 550px;
+  }
+  .hero__ring {
+    max-width: 280px;
+    height: auto;
+  }
+  .hero__bgtext-left,
+  .hero__bgtext-right {
+    font-size: 48px;
+    top: 240px;
+  }
+  .hero__slide.active .hero__bgtext-left,
+  .hero__slide.active .hero__bgtext-right {
+    font-size: 72px;
+  }
+
+  /* Diamonds carousel */
+  .diamond-card {
+    width: 260px;
+    height: auto;
+    padding: 20px;
+  }
+  .diamond-card img {
+    max-width: 110px;
+  }
+  .diamond-card h3 {
+    font-size: 18px;
+  }
+  .diamond-card p {
+    font-size: 13px;
+  }
+}
+
+
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .hero__slide.left {
+    transform: translate(-150%, -40%) scale(0.7) rotate(-8deg);
+  }
+  .hero__slide.right {
+    transform: translate(60%, -40%) scale(0.7) rotate(8deg);
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .hero__slide.left {
+    transform: translate(-100%, -30%) scale(0.65) rotate(-6deg);
+  }
+  .hero__slide.right {
+    transform: translate(20%, -30%) scale(0.65) rotate(6deg);
+  }
+}
+
+/* 💻 Desktop (default ≥ 992px) already styled */
+
 
 
 
