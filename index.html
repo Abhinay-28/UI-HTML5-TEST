@@ -17,36 +17,44 @@
 <body>
 
   <!-- NAV -->
-  <nav class="navbar navbar-expand-lg  navbar-light  bg-white px-4">
-    <div class="container-fluid">
-      <a class="navbar-brand logo" href="#">dimend<span>SCAASI</span></a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse justify-content-center" id="mainNav">
-        <ul class="navbar-nav gap-4">
-          <li class="nav-item"><a class="nav-link" href="#">Diamonds</a></li>
-          <li class="nav-item"><a class="nav-link active" href="#">Accessories</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">Fine Jewelry</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">Watches</a></li>
-        </ul>
-      </div>
-      <div class="nav-icons d-flex align-items-center">
-        <i class="fas fa-search"></i>
-        <i class="far fa-heart"></i>
-        <i class="fas fa-user"></i>
-      </div>
-    </div>
-  </nav>
+  <nav class="navbar navbar-expand-lg navbar-light bg-white px-4">
+  <div class="container-fluid">
+    <!-- Logo -->
+    <a class="navbar-brand logo d-none d-lg-block" href="#">dimend<span>SCAASI</span></a>
 
-  <div class="sub-header">
-    <div class="sub-item">
-      <i class="fas fa-comment"></i> Inquiry
+    <!-- Hamburger -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Menu -->
+    <div class="collapse navbar-collapse justify-content-center" id="mainNav">
+      <ul class="navbar-nav gap-4">
+        <li class="nav-item"><a class="nav-link" href="#">Diamonds</a></li>
+        <li class="nav-item"><a class="nav-link active" href="#">Accessories</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Fine Jewelry</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Watches</a></li>
+      </ul>
     </div>
-    <div class="sub-item">
-      <i class="fas fa-user-circle"></i> Feedback
+
+    <!-- Right Icons -->
+    <div class="nav-icons d-none d-lg-flex align-items-center">
+      <i class="fas fa-search"></i>
+      <i class="far fa-heart"></i>
+      <i class="fas fa-user"></i>
     </div>
   </div>
+</nav>
+
+<!-- Sub Header -->
+<div class="sub-header d-none d-lg-flex">
+  <div class="sub-item">
+    <i class="fas fa-comment"></i> Inquiry
+  </div>
+  <div class="sub-item">
+    <i class="fas fa-user-circle"></i> Feedback
+  </div>
+</div>
 
   <!-- HERO SLIDER -->
   <section class="hero position-relative text-center py-5">
@@ -58,7 +66,7 @@
         <h1 class="hero__bgtext-right">Antique</h1>
         <img src="images/R1.webp" alt="Vintage Antique ring" class="hero__ring img-fluid mx-auto d-block" width="360"
           height="360" loading="eager">
-        <div class="hero__content mt-3">
+        <div class="hero__content mt-0">
           <h2>Vintage & Antique</h2>
           <p class="price fw-bold">$4500</p>
           <p class="offer text-muted">Take 20% off for a limited time. Use Code: LOVE20</p>
@@ -103,7 +111,7 @@
   <!-- COLLECTION -->
   <section class="collection text-center py-5">
     <div class="container">
-      <h2 class="bold-heading">Our Collection</h2>
+      <h1 class="bold-heading">Our Collection</h1>
       <p>Discover our elegant and unique fine jewelry collections,<br>
         ranging from classic diamond studs to stylish pendants <br>
         and dazzling bracelets.</p>
