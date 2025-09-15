@@ -64,9 +64,8 @@ const carousel = document.querySelector('.diamonds__carousel');
 let cards = () => Array.from(document.querySelectorAll('.diamond-card'));
 const dots = Array.from(document.querySelectorAll('.diamonds__dots .dot'));
 
-let currentIndex = Math.floor(cards().length / 2); // middle card index (logical)
+let currentIndex = Math.floor(cards().length / 2);
 
-// Update card positions + dots
 function updateCards() {
   const list = cards();
   list.forEach((card, index) => {
@@ -81,13 +80,24 @@ function updateCards() {
     }
   });
 
-  // Sync dots with the *logical currentIndex*
+  // 🔥 Update dots
   dots.forEach((dot, i) => {
     dot.classList.toggle('active', i === currentIndex);
   });
 }
 
-// Move carousel so clickedIndex becomes center
+function shiftLeft() {
+  carousel.appendChild(carousel.firstElementChild);
+  currentIndex = (currentIndex + 1) % cards().length;
+  updateCards();
+}
+
+function shiftRight() {
+  carousel.insertBefore(carousel.lastElementChild, carousel.firstElementChild);
+  currentIndex = (currentIndex - 1 + cards().length) % cards().length;
+  updateCards();
+}
+
 function moveTo(clickedIndex) {
   const list = cards();
   if (clickedIndex < 0 || clickedIndex >= list.length) return;
@@ -95,22 +105,16 @@ function moveTo(clickedIndex) {
   const diff = clickedIndex - currentIndex;
 
   if (diff > 0) {
-    for (let i = 0; i < diff; i++) {
-      carousel.appendChild(carousel.firstElementChild);
-    }
+    shiftLeft();  // always move left if same or ahead
   } else if (diff < 0) {
-    for (let i = 0; i < Math.abs(diff); i++) {
-      carousel.insertBefore(carousel.lastElementChild, carousel.firstElementChild);
-    }
+    shiftRight(); // always move right if behind
+  } else {
+    // 🔥 same index clicked → still slide (choose a default, here left)
+    shiftLeft();
   }
-
-  // Update logical currentIndex (always update)
-  currentIndex = clickedIndex;
-  updateCards();
 }
 
-
-// Click on card → move it to center
+// 🔥 Clicking a card
 carousel.addEventListener('click', (e) => {
   const clicked = e.target.closest('.diamond-card');
   if (!clicked) return;
@@ -118,11 +122,10 @@ carousel.addEventListener('click', (e) => {
   moveTo(idx);
 });
 
-// Click on dot → move carousel
+// 🔥 Clicking a dot
 dots.forEach((dot, i) => dot.addEventListener('click', () => moveTo(i)));
 
 updateCards();
-
 
 
 
