@@ -86,10 +86,21 @@ body {
   position: relative;
   height: 700px;
   perspective: 1200px;
-  margin-bottom: -159px;
+  margin-bottom: -88px;
 }
 
 /* base slide */
+.hero__slide {
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.6);
+  transition: transform 0.9s ease, opacity 0.6s ease;
+  z-index: 1;
+}
+
+/* active center */
 .hero__slide {
   position: absolute;
   top: 50%;
@@ -107,18 +118,24 @@ body {
   z-index: 4;
 }
 
-/* left & right positions (visual arc) */
+/* left & right positions */
 .hero__slide.left {
   opacity: 1;
-  transform: translate(-220%, -40%) scale(0.78) rotate(-10deg);
-  z-index: 2;
-}
-.hero__slide.right {
-  opacity: 1;
-  transform: translate(120%, -40%) scale(0.78) rotate(10deg);
+  transform: translate(-210%, -17%) scale(0.78) rotate(-10deg);
   z-index: 2;
 }
 
+.hero__slide.right {
+  opacity: 1;
+  transform: translate(110%, -17%) scale(0.78) rotate(10deg);
+  z-index: 2;
+}
+
+/* 👇 Ensure left ↔ right animations also transition smoothly */
+.hero__slide.left,
+.hero__slide.right {
+  transition: transform 0.9s ease, opacity 0.6s ease;
+}
 
 
 
@@ -172,13 +189,25 @@ body {
 }
 
 /* Hide the inline hero__content for non-active slides */
+/* Hide text smoothly */
 .hero__content {
-  display: none;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.45s ease;
+  margin-top: 22px; /* keep layout consistent */
 }
+
+.hero__slide.antique.active .hero__content {
+  margin-top: -20px; /* adjust as needed */
+}
+
+/* Show only after slide settles */
 .hero__slide.active .hero__content {
-  display: block;
-  margin-top: 22px;
+  opacity: 1;
+  transition-delay: 0.6s; /* waits until slide animation is mostly done */
+  pointer-events: auto;
 }
+
 
 /* controls */
 .hero__control {
@@ -198,7 +227,7 @@ body {
 
 .collection h2 {
   font-size: 28px;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
 }
 .collection p { color: #666; }
 
