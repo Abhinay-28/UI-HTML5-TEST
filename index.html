@@ -20,77 +20,60 @@
   <!-- NAV -->
 <!-- NAV -->
 <!-- NAV -->
-<nav class="navbar navbar-expand-lg navbar-light bg-white px-4">
+<!-- ===== NAVBAR ===== -->
+<nav class="navbar navbar-expand-lg navbar-light bg-white px-3">
   <div class="container-fluid">
-    <!-- Logo -->
-    <a class="navbar-brand logo d-none d-lg-block" href="#">dimend<span>SCAASI</span></a>
-
-    <!-- Hamburger -->
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
-      <span class="navbar-toggler-icon"></span>
+    <!-- Hamburger (Mobile Only) -->
+    <button class="navbar-toggler d-lg-none" type="button" id="hamburgerBtn">
+      <i class="fas fa-bars"></i>
     </button>
 
-    <!-- Menu -->
-    <div class="collapse navbar-collapse justify-content-center" id="mainNav">
-      <ul class="navbar-nav gap-4">
-        <!-- Nav items (arrows visible only on mobile) -->
-        <li class="nav-item">
-          <a class="nav-link d-flex justify-content-between align-items-center" href="#">
-            Diamonds
-            <i class="fas fa-chevron-down small ms-2 d-lg-none"></i>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link active d-flex justify-content-between align-items-center" href="#">
-            Accessories
-            <i class="fas fa-chevron-down small ms-2 d-lg-none"></i>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link d-flex justify-content-between align-items-center" href="#">
-            Fine Jewelry
-            <i class="fas fa-chevron-down small ms-2 d-lg-none"></i>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link d-flex justify-content-between align-items-center" href="#">
-            Watches
-            <i class="fas fa-chevron-down small ms-2 d-lg-none"></i>
-          </a>
-        </li>
+    <!-- Logo -->
+    <a class="navbar-brand logo" href="#">dimend<span>SCAASI</span></a>
 
-        <!-- Extra items for mobile only (no arrows) -->
-        <li class="nav-item d-lg-none">
-          <a class="nav-link" href="#">
-            <i class="fas fa-comment me-2"></i> Inquiry
-          </a>
-        </li>
-        <li class="nav-item d-lg-none">
-          <a class="nav-link" href="#">
-            <i class="fas fa-user-circle me-2"></i> Feedback
-          </a>
-        </li>
+    <!-- Right Icons -->
+    <div class="nav-icons d-flex align-items-center d-lg-none ms-auto">
+      <i class="fas fa-search me-3"></i>
+      <i class="fas fa-user"></i>
+    </div>
+
+    <!-- Desktop Nav -->
+    <div class="collapse navbar-collapse justify-content-center d-none d-lg-flex">
+      <ul class="navbar-nav gap-4">
+        <li class="nav-item"><a class="nav-link" href="#">Diamonds</a></li>
+        <li class="nav-item"><a class="nav-link active" href="#">Accessories</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Fine Jewelry</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Watches</a></li>
       </ul>
     </div>
 
-    <!-- Right Icons -->
+    <!-- Desktop Right Icons -->
     <div class="nav-icons d-none d-lg-flex align-items-center">
-      <i class="fas fa-search"></i>
-      <i class="far fa-heart"></i>
+      <i class="fas fa-search me-3"></i>
       <i class="fas fa-user"></i>
     </div>
   </div>
 </nav>
 
-<!-- Sub Header (desktop only) -->
-<div class="sub-header d-none d-lg-flex">
-  <div class="sub-item">
-    <i class="fas fa-comment"></i> Inquiry
-  </div>
-  <div class="sub-item">
-    <i class="fas fa-user-circle"></i> Feedback
-  </div>
+<!-- ===== SUB HEADER (Desktop Only) ===== -->
+<div class="sub-header d-none d-lg-flex justify-content-center gap-4 py-2 bg-light">
+  <div><i class="fas fa-comment me-1"></i> Inquiry</div>
+  <div><i class="fas fa-user-circle me-1"></i> Feedback</div>
 </div>
+
+<!-- ===== MOBILE FULLSCREEN MENU ===== -->
+<div id="mobileMenu" class="mobile-menu-overlay">
+  <button id="closeMenu" class="close-btn">&times;</button>
+  <ul class="menu-links">
+    <li><a href="#" class="dropdown-link"><span>Diamonds</span> <i class="fas fa-chevron-down small"></i></a></li>
+    <li><a href="#" class="dropdown-link"><span>Accessories</span> <i class="fas fa-chevron-down small"></i></a></li>
+    <li><a href="#" class="dropdown-link"><span>Fine Jewelry</span> <i class="fas fa-chevron-down small"></i></a></li>
+    <li><a href="#" class="dropdown-link"><span>Watches</span> <i class="fas fa-chevron-down small"></i></a></li>
+    <li><a href="#" class="simple-link"><i class="fas fa-comment"></i> Inquiry</a></li>
+    <li><a href="#" class="simple-link"><i class="fas fa-user-circle"></i> Feedback</a></li>
+  </ul>
+</div>
+
 
 
 
@@ -155,7 +138,7 @@
         ranging from classic diamond studs to stylish pendants <br>
         and dazzling bracelets.</p>
       <div class="collection__image mt-4">
-        <img src="images/R 4.webp" alt="Our Collection of Four Rings" class="img-fluid rounded shadow" />
+        <img src="images/R 4.jpg" alt="Our Collection of Four Rings" class="img-fluid rounded shadow" />
       </div>
     </div>
   </section>
