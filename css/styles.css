@@ -1207,6 +1207,7 @@ position: relative;
   align-items: center;
   justify-content: center;
   z-index: 9999;
+
 }
 
 .mobile-menu-overlay.active {
@@ -1241,14 +1242,31 @@ position: relative;
   justify-content: space-between;
   align-items: center;
   width: 200px;
+  margin-left: -118px;
 }
 
+
+.mobile-menu-overlay .menu-links a.dropdown-link {
+  justify-content: space-between; /* text left, arrow right */
+}
+
+.mobile-menu-overlay .menu-links a.dropdown-link i.fa-chevron-down {
+  margin-left: auto;
+  padding-right: 10px; /* small gap from right edge */
+}
 .mobile-menu-overlay .menu-links a.simple-link {
   justify-content: flex-start;
 }
 
 .mobile-menu-overlay .menu-links a.simple-link i {
-  margin-right: 10px;
+  margin-right: 20px;
+}
+
+
+.fa-chevron-down:before {
+    content: "\f078";
+    position: relative;
+    left: 115px;
 }
 
 
@@ -1347,6 +1365,7 @@ position: relative;
   color: inherit;
   font-size: 14px;
 }
+
 
 
 
