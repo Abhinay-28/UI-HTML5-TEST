@@ -912,8 +912,11 @@ position: relative;
     transform: translate(-50%, -65%) scale(0.9);
   }
   .hero__ring {
-    max-width: 220px;
-    height: auto;
+    max-width: 229px;
+        height: 200px;
+        position: relative;
+        left: -22px;
+        top: -37px;
   }
   .hero__bgtext-left,
   .hero__bgtext-right {
