@@ -3,19 +3,24 @@ const slides = document.querySelectorAll('.hero__slide');
 let current = 0;
 
 // Mobile Menu
-const hamburger = document.querySelector('.hamburger');
-const mobileMenu = document.querySelector('.mobile-menu');
-const closeBtn = document.querySelector('.mobile-menu .close-btn');
+// const hamburger = document.querySelector('.hamburger');
+ 
+  const closeMenu = document.getElementById("closeMenu");
+   const mobileMenu = document.getElementById("mobileMenu");
 
-if (hamburger && mobileMenu && closeBtn) {
+   
+const hamburger = document.getElementById("hamburgerBtn");
+
+
+
   hamburger.addEventListener('click', () => {
     mobileMenu.classList.add('active');
   });
 
-  closeBtn.addEventListener('click', () => {
+  closeMenu.addEventListener('click', () => {
     mobileMenu.classList.remove('active');
   });
-}
+
 
 function updateSlides() {
   slides.forEach(slide => slide.classList.remove('active', 'left', 'right'));
@@ -28,11 +33,11 @@ function updateSlides() {
   slides[leftIndex].classList.add('left');
   slides[rightIndex].classList.add('right');
 }
-
 function nextSlide() {
   current = (current + 1) % slides.length;
   updateSlides();
 }
+
 
 function prevSlide() {
   current = (current - 1 + slides.length) % slides.length;
@@ -43,7 +48,7 @@ function prevSlide() {
 document.querySelector('.hero__control.next').addEventListener('click', nextSlide);
 document.querySelector('.hero__control.prev').addEventListener('click', prevSlide);
 
-// Clicking on left or right slide also rotates
+
 slides.forEach((slide, i) => {
   slide.addEventListener('click', () => {
     if (slide.classList.contains('right')) {
@@ -58,16 +63,48 @@ slides.forEach((slide, i) => {
 // setInterval(nextSlide, 5000);
 
 updateSlides();
+  
 
 // DIAMONDS CAROUSEL
 const carousel = document.querySelector('.diamonds__carousel');
-let cards = () => Array.from(document.querySelectorAll('.diamond-card'));
-const dots = Array.from(document.querySelectorAll('.diamonds__dots .dot'));
+let CARDS = () => Array.from(document.querySelectorAll('.diamond-card'));
+// const dots = Array.from(document.querySelectorAll('.diamonds__dots .dot'));
 
-let currentIndex = Math.floor(cards().length / 2);
 
-function updateCards() {
-  const list = cards();
+//  const carousel = document.querySelector(".diamonds__carousel");
+  const cards = document.querySelectorAll(".diamond-card");
+  const dotsContainer = document.querySelector(".diamonds__dots");
+
+  function updateDots() {
+  dotsContainer.innerHTML = ""; // clear old dots
+  let totalDots;
+
+  if (window.innerWidth <= 768) {
+    totalDots = Math.ceil(CARDS().length / 3); // group of 3 in mobile
+  } else {
+    totalDots = CARDS().length; // one per card in desktop
+  }
+
+  for (let i = 0; i < totalDots; i++) {
+    const dot = document.createElement("span");
+    dot.classList.add("dot");
+    if (i === 0) dot.classList.add("active");
+
+    // 🔥 Add event listener when creating the dot
+    dot.addEventListener("click", () => moveTo(i));
+
+    dotsContainer.appendChild(dot);
+  }
+}
+
+
+  updateDots();
+  window.addEventListener("resize", updateDots);
+
+let currentIndex = Math.floor(CARDS().length / 2);
+
+function updateCARDS() {
+  const list = CARDS();
   list.forEach((card, index) => {
     card.classList.remove('left', 'center', 'right');
 
@@ -80,26 +117,43 @@ function updateCards() {
     }
   });
 
-  // 🔥 Update dots
-  dots.forEach((dot, i) => {
-    dot.classList.toggle('active', i === currentIndex);
+  // 🔥 Find all dots again
+  const allDots = document.querySelectorAll(".diamonds__dots .dot");
+
+  let activeDotIndex;
+  if (window.innerWidth <= 768) {
+    // group of 3 → figure out which "page" we are on
+    activeDotIndex = Math.floor(currentIndex / 3);
+  } else {
+    // one per card
+    activeDotIndex = currentIndex;
+  }
+
+  allDots.forEach((dot, i) => {
+    dot.classList.toggle("active", i === activeDotIndex);
   });
 }
 
+  // 🔥 Update dots
+  // dots.forEach((dot, i) => {
+  //   dot.classList.toggle('active', i === currentIndex);
+  // });
+
+
 function shiftLeft() {
   carousel.appendChild(carousel.firstElementChild);
-  currentIndex = (currentIndex + 1) % cards().length;
-  updateCards();
+  currentIndex = (currentIndex + 1) % CARDS().length;
+  updateCARDS();
 }
 
 function shiftRight() {
   carousel.insertBefore(carousel.lastElementChild, carousel.firstElementChild);
-  currentIndex = (currentIndex - 1 + cards().length) % cards().length;
-  updateCards();
+  currentIndex = (currentIndex - 1 + CARDS().length) % CARDS().length;
+  updateCARDS();
 }
 
 function moveTo(clickedIndex) {
-  const list = cards();
+  const list = CARDS();
   if (clickedIndex < 0 || clickedIndex >= list.length) return;
 
   const diff = clickedIndex - currentIndex;
@@ -118,14 +172,31 @@ function moveTo(clickedIndex) {
 carousel.addEventListener('click', (e) => {
   const clicked = e.target.closest('.diamond-card');
   if (!clicked) return;
-  const idx = cards().indexOf(clicked);
+  const idx = CARDS().indexOf(clicked);
   moveTo(idx);
 });
 
 // 🔥 Clicking a dot
 dots.forEach((dot, i) => dot.addEventListener('click', () => moveTo(i)));
 
-updateCards();
+updateCARDS();
 
+
+
+// document.addEventListener("DOMContentLoaded", () => {
+//   const mobileMenu = document.getElementById("mobileMenu");
+//   const closeMenu = document.getElementById("closeMenu");
+//   const hamburger = document.getElementById("hamburgerBtn");
+
+//   if (hamburger && mobileMenu && closeMenu) {
+//     hamburger.addEventListener("click", () => {
+//       mobileMenu.classList.add("active");
+//     });
+
+//     closeMenu.addEventListener("click", () => {
+//       mobileMenu.classList.remove("active");
+//     });
+//   }
+// });
 
 
